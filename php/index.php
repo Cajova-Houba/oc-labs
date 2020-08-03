@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    This is my cool PHP page which I'm using to test the OC.
   <?php
     phpinfo();
   ?>
