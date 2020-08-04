@@ -18,7 +18,7 @@ public class HelloController {
 	@RequestMapping("/")
 	public String index() {
 		String text = loadFileContents(FILE_NAME);
-		return "This is my cool Spring Boot app which I'm using to test the OC. File content:\n"+text;
+		return "This is my cool Spring Boot app which I'm using to test the OC. File content:<br>"+text;
 	}
 
 	/**
@@ -34,23 +34,23 @@ public class HelloController {
 		if (!f.exists()) {
 			try {
 				if (!f.createNewFile()) {
-					content.append("New file not created.\n");
+					content.append("New file not created.<br>");
 				}
 			} catch (IOException e) {
 				content.append("Error while creating file: ")
 						.append(e.getMessage())
-						.append("\n");
+						.append("<br>");
 			}
 		}
 
 		if (f.exists()) {
 			try {
 				Files.write(f.toPath(), new Date().toString().getBytes());
-				Files.readAllLines(f.toPath()).forEach(l -> content.append(l).append("\n"));
+				Files.readAllLines(f.toPath()).forEach(l -> content.append(l).append("<br>"));
 			} catch (IOException e) {
 				content.append("Error while reading the file: ")
 						.append(e.getMessage())
-						.append("\n");
+						.append("<br>");
 			}
 		}
 
