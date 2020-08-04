@@ -33,6 +33,9 @@ public class HelloController {
 
 		if (!f.exists()) {
 			try {
+				if (!f.getParentFile().mkdirs()) {
+					content.append("Could not crete path to file.<br>");
+				}
 				if (!f.createNewFile()) {
 					content.append("New file not created.<br>");
 				}
