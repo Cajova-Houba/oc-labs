@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.Date;
 
 @RestController
@@ -48,7 +49,7 @@ public class HelloController {
 
 		if (f.exists()) {
 			try {
-				Files.write(f.toPath(), new Date().toString().getBytes());
+				Files.write(f.toPath(), new Date().toString().getBytes(), StandardOpenOption.APPEND);
 				Files.readAllLines(f.toPath()).forEach(l -> content.append(l).append("<br>"));
 			} catch (IOException e) {
 				content.append("Error while reading the file: ")
